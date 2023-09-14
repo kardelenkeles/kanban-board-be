@@ -4,10 +4,6 @@ import { AutoIncrement, Column, Model, PrimaryKey, Table } from "sequelize-types
 @Table
 export class BoardEntity extends Model {
 
-  @PrimaryKey
-  @AutoIncrement
-  @Column
-  id: number;
 
   @Column
   name: string;

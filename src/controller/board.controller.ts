@@ -1,6 +1,8 @@
-import { Body, Controller, Get, Module, Param, Post } from "@nestjs/common";
+import { Body, Controller, Delete, Get, HttpStatus, Module, NotFoundException, Param, Post, Put } from "@nestjs/common";
 import { BoardService } from "../service/board.service";
 import { BoardDto } from "../dto/board.dto";
+import { BoardEntity } from "../board.entity/board.entity";
+import { UpdateBoardDto } from "../dto/updateBoard.dto";
 
 
 @Controller("board")
@@ -13,9 +15,41 @@ export class BoardController {
     return this.service.getBoards();
   }
 
+  @Get(":id")
+  async getOne(@Param("id") id: string): Promise<BoardEntity> {
+    const board = await this.service.getOneBoard(id);
+    if (!board) {
+      throw new NotFoundException("Board does not exist!");
+    } else {
+      return board;
+    }
+  }
+
   @Post()
   async create(@Body() boardDto: BoardDto) {
+    console.log("board", boardDto);
     return this.service.addBoard(boardDto);
+  }
+
+  @Put(":id")
+  async update(@Param("id") id: number, @Body() data: Partial<UpdateBoardDto>) {
+    await this.service.updateBoard(id, data);
+    return {
+      statusCode: HttpStatus.OK,
+      message: 'User updated successfully'
+    };
+    // return this.service.updateBoard(id, body);
+  }
+
+  @Delete(":id")
+  async remove(@Param("id") id: number) {
+    const board = await this.service.deleteBoard(id);
+    if (!board) {
+      throw new NotFoundException("Board does not exist!");
+    } else {
+      return board;
+    }
+
   }
 
 
