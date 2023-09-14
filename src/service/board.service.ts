@@ -24,7 +24,10 @@ export class BoardService {
 
 
   async addBoard(boardDto: BoardDto): Promise<BoardEntity> {
-    return this.boardRepository.create({ ...boardDto });
+    return this.boardRepository.create({
+      name: boardDto.name.toUpperCase(),
+      description: boardDto.description
+    });
 
   }
 

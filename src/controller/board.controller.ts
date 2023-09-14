@@ -5,7 +5,7 @@ import { BoardEntity } from "../board.entity/board.entity";
 import { UpdateBoardDto } from "../dto/updateBoard.dto";
 
 
-@Controller("board")
+@Controller("boards")
 export class BoardController {
   constructor(private service: BoardService) {
   }
@@ -38,17 +38,13 @@ export class BoardController {
       statusCode: HttpStatus.OK,
       message: 'User updated successfully'
     };
-    // return this.service.updateBoard(id, body);
   }
 
   @Delete(":id")
   async remove(@Param("id") id: number) {
     const board = await this.service.deleteBoard(id);
-    if (!board) {
-      throw new NotFoundException("Board does not exist!");
-    } else {
       return board;
-    }
+
 
   }
 
