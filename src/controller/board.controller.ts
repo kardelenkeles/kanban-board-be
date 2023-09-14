@@ -1,6 +1,6 @@
 import { Body, Controller, Get, Module, Param, Post } from "@nestjs/common";
 import { BoardService } from "../service/board.service";
-import { BoardEntity } from "../board.entity/board.entity";
+import { BoardDto } from "../dto/board.dto";
 
 
 @Controller("board")
@@ -13,9 +13,9 @@ export class BoardController {
     return this.service.getBoards();
   }
 
-  @Post('kanban')
-  create(@Body() board: BoardEntity) {
-    return this.service.addBoard(board);
+  @Post()
+  async create(@Body() boardDto: BoardDto) {
+    return this.service.addBoard(boardDto);
   }
 
 

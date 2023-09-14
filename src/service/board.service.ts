@@ -1,5 +1,6 @@
 import { Inject, Injectable } from '@nestjs/common';
 import { BoardEntity } from '../board.entity/board.entity';
+import { BoardDto } from "../dto/board.dto";
 
 
 @Injectable()
@@ -15,7 +16,7 @@ export class BoardService {
     return await this.boardRepository.findAll<BoardEntity>();
   }
 
-  async addBoard(): Promise<BoardEntity>{
+  async addBoard(boardDto:BoardDto): Promise<BoardEntity>{
     return await this.boardRepository.create();
   }
 
