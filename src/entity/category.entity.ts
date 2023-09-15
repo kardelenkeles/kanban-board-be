@@ -7,7 +7,8 @@ export class CategoryEntity extends Model{
   @Column
   categoryName: string;
 
-  // @HasMany(() => TaskEntity)
-  // task: TaskEntity[];
+
+  @HasMany(() => TaskEntity)
+  task: TaskEntity[];
 
 }

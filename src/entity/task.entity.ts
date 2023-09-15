@@ -11,12 +11,18 @@ export class TaskEntity extends Model<TaskEntity> {
   @Column
   content: string;
 
-  // @ForeignKey(() => BoardEntity)
-  // @BelongsTo(() => BoardEntity)
-  // board: BoardEntity;
-  //
-  //
-  // @ForeignKey(() => CategoryEntity)
-  // @BelongsTo(() => CategoryEntity)
-  // category: CategoryEntity;
+  @ForeignKey(() => BoardEntity)
+  @Column
+  taskId: number;
+
+
+  @BelongsTo(() => BoardEntity)
+  board: BoardEntity;
+
+
+  @ForeignKey(() => CategoryEntity)
+  categoryId: number;
+
+  @BelongsTo(() => CategoryEntity)
+  category: CategoryEntity;
 }

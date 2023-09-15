@@ -11,7 +11,7 @@ export class BoardEntity extends Model {
   @Column
   description: string;
 
-  // @HasMany(() => TaskEntity)
-  // tasks: TaskEntity[];
+  @HasMany(() => TaskEntity)
+  tasks: TaskEntity[];
 
 }
