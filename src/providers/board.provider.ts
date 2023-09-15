@@ -1,4 +1,4 @@
-import { BoardEntity } from '../board.entity/board.entity';
+import { BoardEntity } from '../entity/board.entity';
 
 export const boardProvider = [
   {

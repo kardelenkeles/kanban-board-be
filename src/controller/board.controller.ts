@@ -1,7 +1,7 @@
 import { Body, Controller, Delete, Get, HttpStatus, Module, NotFoundException, Param, Post, Put } from "@nestjs/common";
 import { BoardService } from "../service/board.service";
 import { BoardDto } from "../dto/board.dto";
-import { BoardEntity } from "../board.entity/board.entity";
+import { BoardEntity } from "../entity/board.entity";
 import { UpdateBoardDto } from "../dto/updateBoard.dto";
 
 
@@ -27,7 +27,6 @@ export class BoardController {
 
   @Post()
   async create(@Body() boardDto: BoardDto) {
-    console.log("board", boardDto);
     return this.service.addBoard(boardDto);
   }
 
@@ -44,7 +43,6 @@ export class BoardController {
   async remove(@Param("id") id: number) {
     const board = await this.service.deleteBoard(id);
       return board;
-
 
   }
 

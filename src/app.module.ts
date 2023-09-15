@@ -6,6 +6,7 @@ import { ConfigModule } from "@nestjs/config";
 import databaseConfig from "./config/database.config";
 import { BoardService } from "./service/board.service";
 import { BoardController } from "./controller/board.controller";
+import { TaskModule } from "./module/task.module";
 
 
 @Module({
@@ -13,7 +14,8 @@ import { BoardController } from "./controller/board.controller";
     ConfigModule.forRoot({
       isGlobal: true,
       load: [databaseConfig]
-    })
+    }),
+    TaskModule
 
   ],
   controllers: [AppController],

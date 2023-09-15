@@ -1,8 +1,8 @@
 import { Inject, Injectable, Param } from "@nestjs/common";
-import { BoardEntity } from "../board.entity/board.entity";
+import { BoardEntity } from "../entity/board.entity";
 import { BoardDto } from "../dto/board.dto";
 import { UpdateBoardDto } from "../dto/updateBoard.dto";
-import any = jasmine.any;
+
 
 
 @Injectable()
@@ -25,10 +25,9 @@ export class BoardService {
 
   async addBoard(boardDto: BoardDto): Promise<BoardEntity> {
     return this.boardRepository.create({
-      name: boardDto.name.toUpperCase(),
+      name: boardDto.name,
       description: boardDto.description
     });
-
   }
 
   async deleteBoard(id: number): Promise<any> {
