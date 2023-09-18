@@ -1,4 +1,4 @@
-import { AutoIncrement, Column, HasMany, Model, PrimaryKey, Table } from "sequelize-typescript";
+import { AutoIncrement, Column, ForeignKey, HasMany, Model, PrimaryKey, Table } from "sequelize-typescript";
 import { TaskEntity } from "./task.entity";
 
 
@@ -13,5 +13,6 @@ export class BoardEntity extends Model {
 
   @HasMany(() => TaskEntity)
   tasks: TaskEntity[];
+
 
 }

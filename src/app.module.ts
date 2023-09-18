@@ -7,6 +7,8 @@ import databaseConfig from "./config/database.config";
 import { BoardService } from "./service/board.service";
 import { BoardController } from "./controller/board.controller";
 import { TaskModule } from "./module/task.module";
+import { LabelModule } from "./module/label.module";
+
 
 
 @Module({
@@ -15,7 +17,8 @@ import { TaskModule } from "./module/task.module";
       isGlobal: true,
       load: [databaseConfig]
     }),
-    TaskModule
+    TaskModule,
+    LabelModule
 
   ],
   controllers: [AppController],

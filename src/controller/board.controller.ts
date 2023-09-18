@@ -35,7 +35,7 @@ export class BoardController {
     await this.service.updateBoard(id, data);
     return {
       statusCode: HttpStatus.OK,
-      message: 'User updated successfully'
+      message: 'Board updated successfully'
     };
   }
 

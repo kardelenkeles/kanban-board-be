@@ -1,7 +1,6 @@
 import { Inject, Injectable } from "@nestjs/common";
 import { TaskEntity } from "../entity/task.entity";
 import { TaskDto } from "../dto/task.dto";
-import { UpdateBoardDto } from "../dto/updateBoard.dto";
 import { UpdateTaskDto } from "../dto/updateTask.dto";
 
 @Injectable()
@@ -20,7 +19,8 @@ export class TaskService {
   async addTask(taskDto: TaskDto): Promise<TaskEntity> {
     return this.taskRepository.create({
       header: taskDto.header,
-      content: taskDto.content
+      content: taskDto.content,
+      status: taskDto.status,
     });
   }
 

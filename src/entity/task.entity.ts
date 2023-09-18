@@ -1,6 +1,5 @@
 import { BelongsTo, Column, ForeignKey, Model, Table } from "sequelize-typescript";
 import { BoardEntity } from "./board.entity";
-import { CategoryEntity } from "./category.entity";
 
 @Table
 export class TaskEntity extends Model<TaskEntity> {
@@ -11,18 +10,24 @@ export class TaskEntity extends Model<TaskEntity> {
   @Column
   content: string;
 
+  @Column
+  label: string;
+
+  @Column
+  status: string;
+
+
   @ForeignKey(() => BoardEntity)
   @Column
-  taskId: number;
-
+  boardId: number;
 
   @BelongsTo(() => BoardEntity)
   board: BoardEntity;
 
+  // @ForeignKey(() => LabelEntity)
+  // categoryId: number;
+  //
+  // @BelongsTo(() => LabelEntity)
+  // category: LabelEntity;
 
-  @ForeignKey(() => CategoryEntity)
-  categoryId: number;
-
-  @BelongsTo(() => CategoryEntity)
-  category: CategoryEntity;
 }

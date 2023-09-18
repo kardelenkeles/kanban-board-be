@@ -32,7 +32,7 @@ export class TaskController {
     await this.service.updateTask(id, data);
     return {
       statusCode: HttpStatus.OK,
-      message: 'User updated successfully'
+      message: 'Task updated successfully'
     };
   }
 

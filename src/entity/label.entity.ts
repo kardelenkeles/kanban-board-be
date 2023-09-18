@@ -2,13 +2,12 @@ import { Column, HasMany, Model, Table } from "sequelize-typescript";
 import { TaskEntity } from "./task.entity";
 
 @Table
-export class CategoryEntity extends Model{
+export class LabelEntity extends Model{
 
   @Column
-  categoryName: string;
+  labelName: string;
 
-
-  @HasMany(() => TaskEntity)
-  task: TaskEntity[];
+  // @HasMany(() => TaskEntity)
+  // tasks: TaskEntity[];
 
 }

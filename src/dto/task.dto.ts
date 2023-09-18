@@ -11,4 +11,12 @@ export class TaskDto {
   @IsOptional()
   content: string;
 
+  @ApiProperty()
+  @IsOptional()
+  label: string;
+
+  @ApiProperty()
+  @IsOptional()
+  status: string;
+
 }
